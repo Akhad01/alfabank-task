@@ -1,8 +1,11 @@
+import { Container } from "@mui/material"
+import CardList from "./components/CardList"
+
 function App() {
   return (
-    <div>
-      Hello world!
-    </div>
+    <Container>
+      <CardList />
+    </Container>
   )
 }
 
