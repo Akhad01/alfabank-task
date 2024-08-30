@@ -1,21 +1,16 @@
-import { useEffect, useState } from "react"
 import ProductCard from "../ProductCard"
 import { ProductList } from "./styled"
+import { useGetProductsQuery } from "../../services/productsApi"
 
 const CardList = () => {
-  const [test, setTest] = useState([])
+  const { data, isLoading } = useGetProductsQuery()
 
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then(json=>setTest(json))
-  }, [])
-  console.log(test);
+  if (isLoading) return <div>Loading...</div>
   
   return (
     <ProductList>
       {
-        test && test.map(item => <ProductCard item={item} />) 
+        data?.map(item => <ProductCard item={item} />) 
       }
     </ProductList>
   )

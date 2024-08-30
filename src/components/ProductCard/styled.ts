@@ -16,6 +16,6 @@ export const ImageContainer = styled.div`
 `
 
 export const Image = styled.img`
-    width: "100%"; 
+    width: 100%; 
     max-height: 320px
 `

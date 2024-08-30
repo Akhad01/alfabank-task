@@ -1,5 +1,4 @@
 import Button from '@mui/joy/Button';
-import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import CardActions from '@mui/joy/CardActions';
 import IconButton from '@mui/joy/IconButton';
