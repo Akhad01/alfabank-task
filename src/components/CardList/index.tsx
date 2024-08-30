@@ -3,14 +3,14 @@ import { ProductList } from "./styled"
 import { useGetProductsQuery } from "../../services/productsApi"
 
 const CardList = () => {
-  const { data, isLoading } = useGetProductsQuery()
+  const { data: products, isLoading } = useGetProductsQuery()
 
   if (isLoading) return <div>Loading...</div>
   
   return (
     <ProductList>
       {
-        data?.map(item => <ProductCard item={item} />) 
+        products?.map(product => <ProductCard product={product} />) 
       }
     </ProductList>
   )
