@@ -6,7 +6,7 @@ import filterReducer from './slices/filter-slice'
 export const store = configureStore({
     reducer: {
         [productsApi.reducerPath]: productsApi.reducer,
-        like: likeReducer,
+        likes: likeReducer,
         filter: filterReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productsApi.middleware)

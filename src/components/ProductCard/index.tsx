@@ -7,8 +7,9 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import { CardWrapper, Image, ImageContainer } from './styled';
 import { ProductItem } from '../../types/product-item';
 import { useDeleteProductsMutation } from '../../services/productsApi';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { toggleLike } from '../../store/slices/like-slice';
+import { getLikedProducts } from '../../store/selectors/like-selector';
 
 interface Props {
   product: ProductItem
@@ -16,6 +17,8 @@ interface Props {
 
 const ProductCard = ({ product }: Props) => {
   const dispatch = useAppDispatch()
+  const likedProducts = useAppSelector(getLikedProducts);
+  const isLiked = likedProducts.includes(product.id)
 
   const [deleteProduct] = useDeleteProductsMutation()
 
@@ -54,7 +57,7 @@ const ProductCard = ({ product }: Props) => {
           </Typography>
         </div>
         <IconButton onClick={handleLike} variant="outlined" color="neutral" >
-          <FavoriteBorder />
+          <FavoriteBorder style={{color: isLiked ? "red" : "black"}} />
         </IconButton>
         <Button onClick={handleDelete} variant="solid" color="primary">
           Delete

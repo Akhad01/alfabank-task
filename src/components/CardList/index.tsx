@@ -12,7 +12,6 @@ const CardList = () => {
 
   if (isLoading) return <div>Loading...</div>
 
-
   const filteredProducts = showLikedOnly 
     ? products?.filter(product => likedProducts.includes(product.id)) 
     : products

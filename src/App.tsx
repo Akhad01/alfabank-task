@@ -5,7 +5,9 @@ import FilterButton from "./components/FilterButton"
 function App() {
   return (
     <Container>
-      <FilterButton />
+      <div style={{ display: "flex", justifyContent: "center", margin: "20px 0" }}>
+        <FilterButton />
+      </div>
       <CardList />
     </Container>
   )
