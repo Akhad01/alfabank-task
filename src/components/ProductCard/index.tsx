@@ -7,12 +7,16 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import { CardWrapper, Image, ImageContainer } from './styled';
 import { ProductItem } from '../../types/product-item';
 import { useDeleteProductsMutation } from '../../services/productsApi';
+import { useAppDispatch } from '../../hooks/redux';
+import { toggleLike } from '../../store/slices/like-slice';
 
 interface Props {
   product: ProductItem
 }
 
 const ProductCard = ({ product }: Props) => {
+  const dispatch = useAppDispatch()
+
   const [deleteProduct] = useDeleteProductsMutation()
 
   const handleDelete = async () => {
@@ -21,6 +25,10 @@ const ProductCard = ({ product }: Props) => {
     } catch (error) {
       console.error('Failed to delete the product:', error);
     }
+  }
+
+  const handleLike = () => {
+    dispatch(toggleLike(product.id))
   }
 
   return (
@@ -45,7 +53,7 @@ const ProductCard = ({ product }: Props) => {
             ${product.price}
           </Typography>
         </div>
-        <IconButton variant="outlined" color="neutral" >
+        <IconButton onClick={handleLike} variant="outlined" color="neutral" >
           <FavoriteBorder />
         </IconButton>
         <Button onClick={handleDelete} variant="solid" color="primary">
