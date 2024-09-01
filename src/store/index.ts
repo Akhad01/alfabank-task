@@ -1,4 +1,5 @@
-import { configureStore } from "@reduxjs/toolkit"; 
+import { configureStore } from "@reduxjs/toolkit";
+ 
 import { productsApi } from "../services/productsApi";
 import likeReducer from './slices/like-slice'
 import filterReducer from './slices/filter-slice'

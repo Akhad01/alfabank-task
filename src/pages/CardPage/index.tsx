@@ -1,9 +1,11 @@
-import { Container } from "@mui/material"
-import { CardSection, CardDescription, CardSectionImage, CardSectionInner, ProductCategory, ProductDescription, ProductPrice, ProductRating, ProductTitle, ProductCard, CardButton } from "./styled"
-import { useNavigate, useParams } from "react-router-dom"
-import { useGetProductByIdQuery } from "../../services/productsApi"
 import StarIcon from '@mui/icons-material/Star';
+import { Container } from "@mui/material"
+import { useNavigate, useParams } from "react-router-dom"
+
+import { useGetProductByIdQuery } from "../../services/productsApi"
 import Skeleton from "../../components/Skeleton";
+
+import { CardSection, CardDescription, CardSectionImage, CardSectionInner, ProductCategory, ProductDescription, ProductPrice, ProductRating, ProductTitle, ProductCard, CardButton } from "./styled"
 
 type Params = {
   id: string;

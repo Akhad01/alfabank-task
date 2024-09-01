@@ -2,14 +2,15 @@ import Button from '@mui/joy/Button';
 import CardContent from '@mui/joy/CardContent';
 import CardActions from '@mui/joy/CardActions';
 import IconButton from '@mui/joy/IconButton';
-import Typography from '@mui/joy/Typography';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-import { CardWrapper, Image, ImageContainer, LinkWrapper } from './styled';
+
 import { ProductItem } from '../../types/product-item';
 import { useDeleteProductsMutation } from '../../services/productsApi';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { toggleLike } from '../../store/slices/like-slice';
 import { getLikedProducts } from '../../store/selectors/like-selector';
+
+import { CardWrapper, Image, ImageContainer, LinkWrapper, Text } from './styled';
 
 interface Props {
   product: ProductItem
@@ -46,18 +47,18 @@ const ProductCard = ({ product }: Props) => {
             />
           </ImageContainer>
           <CardContent>
-            <Typography level="title-lg" sx={{textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap"}}>{product.title}</Typography>
-            <Typography level="body-sm" sx={{textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap"}}>
+            <Text level="title-lg" sx={{textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap"}}>{product.title}</Text>
+            <Text level="body-sm" sx={{textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap"}}>
               {product.description}
-            </Typography>
+            </Text>
           </CardContent>
         </LinkWrapper>
           <CardActions buttonFlex="0 1 130px">
             <div>
-              <Typography level="body-xs">Total price:</Typography>
-              <Typography fontSize="lg" fontWeight="lg">
+              <Text fontFamily={{  }} level="body-xs">Total price:</Text>
+              <Text fontSize="lg" fontWeight="lg">
                 ${product.price}
-              </Typography>
+              </Text>
             </div>
             <IconButton onClick={handleLike} variant="outlined" color="neutral" >
               <FavoriteBorder style={{color: isLiked ? "red" : "black"}} />
