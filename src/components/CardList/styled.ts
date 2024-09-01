@@ -7,3 +7,4 @@ export const ProductList = styled.div`
     gap: 20px;
     align-items: center
 `
+

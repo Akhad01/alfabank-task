@@ -4,13 +4,18 @@ import { useGetProductsQuery } from "../../services/productsApi"
 import { useAppSelector } from "../../hooks/redux"
 import { getFilterShow } from "../../store/selectors/filter-selector"
 import { getLikedProducts } from "../../store/selectors/like-selector"
+import Skeleton from "../Skeleton"
 
 const CardList = () => {
   const { data: products, isLoading } = useGetProductsQuery()
   const showLikedOnly = useAppSelector(getFilterShow)
   const likedProducts = useAppSelector(getLikedProducts)
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) {
+    return (
+      <Skeleton />
+    )
+  }
 
   const filteredProducts = showLikedOnly 
     ? products?.filter(product => likedProducts.includes(product.id)) 
@@ -19,7 +24,7 @@ const CardList = () => {
   return (
     <ProductList>
       {
-        filteredProducts?.map(product => <ProductCard product={product} />) 
+        filteredProducts?.map(product => <ProductCard key={product.id} product={product} />) 
       }
     </ProductList>
   )

@@ -1,15 +1,13 @@
-import { Container } from "@mui/material"
-import CardList from "./components/CardList"
-import FilterButton from "./components/FilterButton"
+import { Route, Routes } from "react-router-dom"
+import MainPage from "./pages/MainPage"
+import CardPage from "./pages/CardPage"
 
 function App() {
   return (
-    <Container>
-      <div style={{ display: "flex", justifyContent: "center", margin: "20px 0" }}>
-        <FilterButton />
-      </div>
-      <CardList />
-    </Container>
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+      <Route path="/:id" element={<CardPage />} />
+    </Routes>
   )
 }
 
